@@ -76,7 +76,7 @@ def inception_resnet_1(x_image):
 	
 	return f1
 
-def inception_resnet(x_image):
+def inception_resnet_2(x_image):
 
 
 	"""
@@ -106,12 +106,12 @@ def inception_resnet(x_image):
 	FCL_input = bottleneck_tensor
 
 	f1 = fullyConnectedLayer(
-		FCL_input, input_size=bottleneck_tensor_size, num_neurons=512, 
+		FCL_input, input_size=bottleneck_tensor_size, num_neurons=1024, 
 		func=tf.nn.relu, name='F1')
 	
 	drop1 = tf.layers.dropout(inputs=f1, rate=0.4)	
 	
-	f2 = fullyConnectedLayer(drop1, input_size=512, num_neurons=1, 
+	f2 = fullyConnectedLayer(drop1, input_size=1024, num_neurons=1, 
 		func=tf.sigmoid, name='F2')
 
 	return f2
