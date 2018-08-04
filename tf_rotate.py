@@ -32,7 +32,7 @@ import gzip
 from rotate_images import *
 import network
 
-in_dir='data'
+in_dir='data_small'
 BATCH_SIZE = 2
 selected_network = 2
 
