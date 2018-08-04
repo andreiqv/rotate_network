@@ -32,8 +32,8 @@ import gzip
 from rotate_images import *
 import network
 
-in_dir='data_small'
-BATCH_SIZE = 2
+in_dir='data'
+BATCH_SIZE = 5
 selected_network = 2
 
 if selected_network == 1:
@@ -129,8 +129,6 @@ with graph.as_default():
 		init = tf.global_variables_initializer()
 		sess.run(init)	# Randomly initialize weights.
 		for iteration in range(NUM_ITERS):			  # Train iteratively for NUM_iterationS.		 
-
-			print(iteration)
 
 			if iteration % (50*DISPLAY_INTERVAL) == 0:
 
