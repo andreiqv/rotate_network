@@ -30,7 +30,7 @@ np.set_printoptions(precision=4, suppress=True)
 from layers import *
 
 
-def conv_network1(x_image):
+def conv_network_1(x_image):
 
 	# conv layers
 	p1 = convPoolLayer(x_image, kernel=(5,5), pool_size=3, num_in=1, num_out=16, 
@@ -62,6 +62,19 @@ def conv_network1(x_image):
 	return f3
 
 
+
+def inception_resnet_1(x_image):
+
+	module = hub.Module("https://tfhub.dev/google/imagenet/inception_resnet_v2/feature_vector/1")
+	bottleneck_tensor_size = 1536
+	bottleneck_tensor = module(x_image)  # Features with shape [batch_size, num_features]
+	FCL_input = bottleneck_tensor
+
+	f1 = fullyConnectedLayer(
+		FCL_input, input_size=bottleneck_tensor_size, num_neurons=1, 
+		func=tf.sigmoid, name='F1')
+	
+	return f1
 
 def inception_resnet(x_image):
 

@@ -38,10 +38,10 @@ selected_network = 2
 
 if selected_network == 1:
 	height, width, color =  540, 540, 1
-	neural_network = network.conv_network1
+	neural_network = network.conv_network_1
 elif selected_network == 2:
 	height, width, color =  299, 299, 3
-	neural_network = network.inception_resnet
+	neural_network = network.inception_resnet_1
 
 
 shape = height, width, color
