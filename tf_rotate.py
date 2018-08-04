@@ -133,6 +133,8 @@ with graph.as_default():
 		sess.run(init)	# Randomly initialize weights.
 		for iteration in range(NUM_ITERS):			  # Train iteratively for NUM_iterationS.		 
 
+			print(iteration)
+
 			if iteration % (50*DISPLAY_INTERVAL) == 0:
 
 				#output_values = output.eval(feed_dict = {x:train['images'][:3]})
