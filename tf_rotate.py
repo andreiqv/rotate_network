@@ -50,7 +50,7 @@ import os.path
 if os.path.exists('.notebook'):
 	DISPLAY_INTERVAL, NUM_ITERS = 1, 5000
 else:
-	DISPLAY_INTERVAL, NUM_ITERS = 10, 500000
+	DISPLAY_INTERVAL, NUM_ITERS = 1, 50000
 
 
 GZIP = False
