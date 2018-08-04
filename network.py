@@ -74,12 +74,13 @@ def inception_resnet(x_image):
 	"""
 
 	module = hub.Module("https://tfhub.dev/google/imagenet/inception_resnet_v2/feature_vector/1")
+	height, width, color =  299, 299, 3
+	bottleneck_tensor_size = 1536
 
-	bottleneck_tensor = module(x_image, shape=(height, width, 3))  # Features with shape [batch_size, num_features]
+	bottleneck_tensor = module(x_image, shape=(height, width, color))  # Features with shape [batch_size, num_features]
 	
 	print('bottleneck_tensor:', bottleneck_tensor)
 
-	bottleneck_tensor_size = 1536
 
 	"""
 	bottleneck_input = tf.placeholder_with_default(  # A placeholder op that passes through input when its output is not fed.
