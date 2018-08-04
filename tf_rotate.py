@@ -99,15 +99,11 @@ with graph.as_default():
 	# 1. Construct a graph representing the model.
 	x = tf.placeholder(tf.float32, [None, height, width, color]) # Placeholder for input.
 	y = tf.placeholder(tf.float32, [None, 1])   # Placeholder for labels.
-	
 	x_image = tf.reshape(x, [-1, height, width, color])
-
 	output = neural_network(x_image)
-	
 	print('output =', output)
 
 	# 2. Add nodes that represent the optimization algorithm.
-
 	loss = tf.reduce_mean(tf.square(output - y))
 	#loss = tf.reduce_mean(tf.abs(1 -  tf.abs(tf.abs(output - y) - 1 ))) # 
 	#loss = tf.reduce_mean(tf.squared_difference(y, output))
@@ -120,6 +116,7 @@ with graph.as_default():
 	#train_op = tf.train.GradientDescentOptimizer(0.01)
 	train_op = optimizer.minimize(loss)
 		
+	# for classification:
 	#loss = tf.nn.softmax_cross_entropy_with_logits_v2(logits=logits, labels=y)
 	#train_op = tf.train.AdagradOptimizer(0.01).minimize(loss)
 	#correct_prediction = tf.equal(tf.argmax(logits,1), tf.argmax(y,1))

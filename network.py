@@ -75,7 +75,7 @@ def inception_resnet(x_image):
 
 	module = hub.Module("https://tfhub.dev/google/imagenet/inception_resnet_v2/feature_vector/1")
 
-	bottleneck_tensor = module(resized_input_tensor, shape=(height, width, 3))  # Features with shape [batch_size, num_features]
+	bottleneck_tensor = module(x_image, shape=(height, width, 3))  # Features with shape [batch_size, num_features]
 	
 	print('bottleneck_tensor:', bottleneck_tensor)
 
