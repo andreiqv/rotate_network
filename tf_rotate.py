@@ -33,6 +33,7 @@ from rotate_images import *
 import network
 
 BATCH_SIZE = 1
+
 #height, width, color =  299, 299, 3
 
 selected_network = 2
