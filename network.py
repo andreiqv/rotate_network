@@ -21,6 +21,7 @@ iteration 420: train_acc=0.2516, valid_acc=0.2653
 
 from __future__ import absolute_import,  division, print_function
 import tensorflow as tf
+import tensorflow_hub as hub
 import sys
 import math
 import numpy as np

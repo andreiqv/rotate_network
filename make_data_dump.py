@@ -95,9 +95,8 @@ def split_data(data, ratio=(6,1,3)):
 	return splited_data
 
 
-def get_data(shape, ratio):
-
-	in_dir = 'data'
+def get_data(in_dir, shape, ratio):
+	
 	data1 = load_data(in_dir, shape=shape)
 
 	print(len(data1['images']))

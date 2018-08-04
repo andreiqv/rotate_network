@@ -32,10 +32,8 @@ import gzip
 from rotate_images import *
 import network
 
-BATCH_SIZE = 1
-
-#height, width, color =  299, 299, 3
-
+in_dir='data'
+BATCH_SIZE = 2
 selected_network = 2
 
 if selected_network == 1:
@@ -44,7 +42,6 @@ if selected_network == 1:
 elif selected_network == 2:
 	height, width, color =  299, 299, 3
 	neural_network = network.inception_resnet
-
 
 
 shape = height, width, color
@@ -63,7 +60,7 @@ if GZIP: # load data from dump.gz
 else:
 	# use raw jpg files
 	import make_data_dump
-	data = make_data_dump.get_data(shape=shape, ratio=(6,1,3))
+	data = make_data_dump.get_data(in_dir=in_dir, shape=shape, ratio=(6,1,3))
 
 train = data['train']
 valid = data['valid']
@@ -218,8 +215,9 @@ with graph.as_default():
 
 		# Rotate images:
 		print('Rotate images')
-		in_dir = 'data'
+		#in_dir = 'data'
 		out_dir = 'valid'
+		os.system('mkdir -p {0}'.format(out_dir))
 		angles = output_angles_valid
 		file_names = valid['filenames'][:len(angles)]
 		print('len(angles) =', len(angles))
