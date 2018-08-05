@@ -98,7 +98,7 @@ def inception_resnet_50(x_image):
 	return f1
 
 
-def inception_resnet_50_2x_image):
+def inception_resnet_50_2(x_image):
 
 	module = hub.Module("https://tfhub.dev/google/imagenet/resnet_v1_50/feature_vector/1")
 	bottleneck_tensor_size = 2048
