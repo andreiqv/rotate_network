@@ -42,8 +42,7 @@ if selected_network == 1:
 elif selected_network == 2:
 	height, width, color =  299, 299, 3
 	neural_network = network.inception_resnet_2
-elif 
-	selected_network == 3:
+elif selected_network == 3:
 	height, width, color =  224, 224, 3
  	neural_network = network.inception_resnet_50
 
