@@ -63,28 +63,9 @@ def conv_network_1(x_image):
 
 #--------
 
-
-def resnet_2(x_image):
-
-
-	module = hub.Module("https://tfhub.dev/google/imagenet/inception_resnet_v2/feature_vector/1")
-	bottleneck_tensor_size = 1536
-	bottleneck_tensor = module(x_image)  # Features with shape [batch_size, num_features]
-
-	f1 = fullyConnectedLayer(
-		bottleneck_tensor, input_size=bottleneck_tensor_size, num_neurons=1024, 
-		func=tf.nn.relu, name='F1')
-	
-	drop1 = tf.layers.dropout(inputs=f1, rate=0.4)	
-	
-	f2 = fullyConnectedLayer(drop1, input_size=1024, num_neurons=1, 
-		func=tf.sigmoid, name='F2')
-
-	return f2
-
 #--------
 
-def inception_resnet_50(x_image):
+def resnet_50_1(x_image):
 
 	module = hub.Module("https://tfhub.dev/google/imagenet/resnet_v1_50/feature_vector/1")
 	bottleneck_tensor_size = 2048
@@ -98,7 +79,7 @@ def inception_resnet_50(x_image):
 	return f1
 
 
-def inception_resnet_50_2(x_image):
+def resnet_50_2(x_image):
 
 	module = hub.Module("https://tfhub.dev/google/imagenet/resnet_v1_50/feature_vector/1")
 	bottleneck_tensor_size = 2048
@@ -117,6 +98,24 @@ def inception_resnet_50_2(x_image):
 	return f2
 
 
+
+#-------------------------------------
+
+
+def inception_resnet_1(x_image):
+
+	module = hub.Module("https://tfhub.dev/google/imagenet/inception_resnet_v2/feature_vector/1")
+	bottleneck_tensor = module(x_image)  # Features with shape [batch_size, num_features]
+	bottleneck_tensor_size = 1536
+
+	f1 = fullyConnectedLayer(
+		bottleneck_tensor, input_size=bottleneck_tensor_size, num_neurons=1024, 
+		func=tf.sigmoid, name='F1')
+	
+
+	return f1
+
+	
 
 def inception_resnet_2(x_image):
 	# iter 2160: train_loss=0.1142, valid_loss=0.1190 (min=0.0926 (109.52 grad.))
@@ -157,3 +156,6 @@ def inception_resnet_2(x_image):
 		func=tf.sigmoid, name='F2')
 
 	return f2
+
+
+
